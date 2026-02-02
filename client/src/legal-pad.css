@@ -57,10 +57,10 @@
   word-wrap: break-word;
 }
 
-/* Paper container */
+/* Paper container - doubled width */
 .legal-pad-container {
   position: relative;
-  max-width: 600px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 

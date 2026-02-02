@@ -37,32 +37,30 @@
             </div>
           </div>
 
-            <div class="row">
+            <div class="controls-row">
               <label class="check">
                 <input type="checkbox" id="toggle-password" />
-                Protect with password
+                <span>Protect with password</span>
               </label>
+              <div class="expiration-wrapper">
+                <label for="note-expiration">Expires</label>
+                <select id="note-expiration" name="expiration">
+                  <option value="1h">1 hour</option>
+                  <option value="24h" selected>24 hours</option>
+                  <option value="7d">7 days</option>
+                  <option value="30d">30 days</option>
+                </select>
+              </div>
             </div>
 
-            <div class="row" id="password-row" hidden>
-              <label for="note-password">Password</label>
+            <div class="row password-hidden" id="password-row">
               <input
                 type="password"
                 id="note-password"
                 name="password"
-                placeholder="Optional password"
+                placeholder="Enter password"
                 autocomplete="new-password"
               />
-            </div>
-
-            <div class="row">
-              <label for="note-expiration">Expiration</label>
-              <select id="note-expiration" name="expiration">
-                <option value="1h">1 hour</option>
-                <option value="24h" selected>24 hours</option>
-                <option value="7d">7 days</option>
-                <option value="30d">30 days</option>
-              </select>
             </div>
 
             <button type="submit" class="primary">Create note</button>
@@ -74,6 +72,11 @@
             <div class="result-row">
               <input id="result-url" readonly />
               <button type="button" id="copy-button">Copy</button>
+              <button type="button" id="email-button" class="secondary">Email</button>
+            </div>
+            <div id="email-form" class="email-form" hidden>
+              <input type="email" id="email-input" placeholder="Enter email address" />
+              <button type="button" id="send-email-button">Send</button>
             </div>
             <p class="helper">Anyone with this link can read the note.</p>
           </div>
