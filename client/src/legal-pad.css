@@ -1,12 +1,7 @@
-/* Legal Pad Paper Styling */
+/* Clean Yellow Paper Styling - No lines, no holes, just yellow with red margin */
 
 .legal-pad {
   background-color: #fdf6a8; /* Classic legal pad yellow */
-  background-image: 
-    linear-gradient(#e8e4b8 1px, transparent 1px),
-    linear-gradient(90deg, #ff6b6b 1px, transparent 1px);
-  background-size: 100% 24px, 60px 100%;
-  background-position: 0 0, 40px 0;
   position: relative;
   min-height: 600px;
   padding: 20px 20px 20px 80px;
@@ -14,56 +9,12 @@
     0 1px 3px rgba(0,0,0,0.12),
     0 1px 2px rgba(0,0,0,0.24),
     inset 0 0 60px rgba(0,0,0,0.05);
-  border-radius: 0 0 4px 4px;
+  border-radius: 4px;
   font-family: 'Courier New', 'Courier', monospace;
-  line-height: 24px;
+  line-height: 1.6;
 }
 
-/* Perforated top edge */
-.legal-pad::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background: 
-    radial-gradient(circle at 10px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 30px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 50px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 70px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 90px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 110px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 130px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 150px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 170px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 190px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 210px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 230px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 250px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 270px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 290px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 310px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 330px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 350px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 370px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 390px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 410px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 430px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 450px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 470px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 490px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 510px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 530px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 550px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 570px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px),
-    radial-gradient(circle at 590px 10px, transparent 4px, #f0e8a0 4px, #f0e8a0 5px, transparent 5px);
-  background-size: 600px 20px;
-  background-repeat: repeat-x;
-  border-bottom: 2px dashed #d0c880;
-}
-
-/* Red margin line */
+/* Red margin line only */
 .legal-pad::after {
   content: '';
   position: absolute;
@@ -75,7 +26,7 @@
   opacity: 0.6;
 }
 
-/* Textarea that looks like handwriting on legal pad */
+/* Textarea that looks like handwriting on yellow paper */
 .legal-pad textarea {
   background: transparent;
   border: none;
@@ -83,7 +34,7 @@
   min-height: 500px;
   font-family: 'Courier New', 'Courier', monospace;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.6;
   color: #2c3e50;
   resize: none;
   outline: none;
@@ -100,31 +51,17 @@
 .legal-pad .note-content {
   font-family: 'Courier New', 'Courier', monospace;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.6;
   color: #2c3e50;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-/* Paper texture overlay */
+/* Paper container */
 .legal-pad-container {
   position: relative;
   max-width: 600px;
   margin: 0 auto;
-  padding-top: 20px;
-}
-
-.legal-pad-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.03;
-  pointer-events: none;
-  border-radius: 0 0 4px 4px;
 }
 
 /* Responsive */
