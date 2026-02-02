@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>MemNote</title>
     <link rel="stylesheet" href="/src/styles.css" />
+    <link rel="stylesheet" href="/src/legal-pad.css" />
   </head>
   <body>
     <div class="page">
@@ -17,14 +18,17 @@
         <section id="create-view" class="view active" aria-live="polite">
           <h2>Create a note</h2>
           <form id="create-form">
-            <label for="note-content">Your note</label>
-            <textarea
-              id="note-content"
-              name="content"
-              rows="7"
-              placeholder="Write your note here..."
-              required
-            ></textarea>
+            <div class="legal-pad-container">
+            <div class="legal-pad">
+              <textarea
+                id="note-content"
+                name="content"
+                rows="20"
+                placeholder="Write your note here..."
+                required
+              ></textarea>
+            </div>
+          </div>
 
             <div class="row">
               <label class="check">
@@ -85,7 +89,11 @@
             <button id="view-button" class="primary">Reveal note</button>
             <p class="status" id="view-status" role="status"></p>
           </div>
-          <article id="note-output" class="note" hidden></article>
+          <div class="legal-pad-container">
+            <div class="legal-pad">
+              <article id="note-output" class="note-content" hidden></article>
+            </div>
+          </div>
           <button id="back-home" class="ghost" hidden>Back to create</button>
         </section>
       </main>
