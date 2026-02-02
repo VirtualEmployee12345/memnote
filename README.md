@@ -1,6 +1,6 @@
-# MemNote
+# NoteTransfer
 
-MemNote is a lightweight note service with a simple HTTP API. It’s designed as a minimal backend you can extend with Redis-backed storage and a wordlist utility for generating short memos or prompts.
+NoteTransfer is a secure, self-destructing note sharing service. Create notes with memorable URLs that automatically delete after being read or when they expire.
 
 ## Features
 - Express server with a health check endpoint
@@ -14,7 +14,7 @@ MemNote is a lightweight note service with a simple HTTP API. It’s designed as
 2. Run tests: `npm test`
 
 ## Project Structure
-- `server/index.js` — Express app entry point
-- `server/config/redis.js` — Redis connection helper
-- `server/utils/wordlist.js` — Word lists (adjectives, nouns, animals)
-- `server/tests/api.test.js` — API tests
+- `server/index.js` - Express app entry point
+- `server/config/redis.js` - Redis connection helper
+- `server/utils/wordlist.js` - Word lists (adjectives, nouns, animals)
+- `server/tests/api.test.js` - API tests
