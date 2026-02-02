@@ -200,6 +200,19 @@ backHome.addEventListener('click', () => {
   showView('create');
 });
 
+// Footer "Write a new note" button
+const footerNewNote = document.getElementById('footer-new-note');
+if (footerNewNote) {
+  footerNewNote.addEventListener('click', () => {
+    window.history.pushState({}, '', '/');
+    resetViewState();
+    resetResult();
+    noteContent.value = '';
+    showView('create');
+    noteContent.focus();
+  });
+}
+
 window.addEventListener('popstate', () => {
   resetViewState();
   resetResult();
