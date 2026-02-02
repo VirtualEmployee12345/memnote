@@ -36,7 +36,7 @@
   font-size: 16px;
   line-height: 1.6;
   color: #2c3e50;
-  resize: vertical;
+  resize: both;
   outline: none;
   padding: 0;
   margin: 0;
@@ -45,6 +45,12 @@
 .legal-pad textarea::placeholder {
   color: #95a5a6;
   opacity: 0.7;
+}
+
+/* Custom resize handle at bottom right corner */
+.legal-pad textarea::-webkit-resizer {
+  background: linear-gradient(135deg, transparent 50%, #ff6b6b 50%);
+  border-bottom-right-radius: 4px;
 }
 
 /* Note display (when viewing) */
