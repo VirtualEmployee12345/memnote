@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MemNote</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="brand">
+        <h1>MemNote</h1>
+        <p>Share notes that disappear after reading.</p>
+      </header>
+
+      <main class="card">
+        <section id="create-view" class="view active" aria-live="polite">
+          <h2>Create a note</h2>
+          <form id="create-form">
+            <label for="note-content">Your note</label>
+            <textarea
+              id="note-content"
+              name="content"
+              rows="7"
+              placeholder="Write your note here..."
+              required
+            ></textarea>
+
+            <div class="row">
+              <label class="check">
+                <input type="checkbox" id="toggle-password" />
+                Protect with password
+              </label>
+            </div>
+
+            <div class="row" id="password-row" hidden>
+              <label for="note-password">Password</label>
+              <input
+                type="password"
+                id="note-password"
+                name="password"
+                placeholder="Optional password"
+                autocomplete="new-password"
+              />
+            </div>
+
+            <div class="row">
+              <label for="note-expiration">Expiration</label>
+              <select id="note-expiration" name="expiration">
+                <option value="1h">1 hour</option>
+                <option value="24h" selected>24 hours</option>
+                <option value="7d">7 days</option>
+                <option value="30d">30 days</option>
+              </select>
+            </div>
+
+            <button type="submit" class="primary">Create note</button>
+            <p class="status" id="create-status" role="status"></p>
+          </form>
+
+          <div id="result" class="result" hidden>
+            <h3>Your memorable link</h3>
+            <div class="result-row">
+              <input id="result-url" readonly />
+              <button type="button" id="copy-button">Copy</button>
+            </div>
+            <p class="helper">Anyone with this link can read the note.</p>
+          </div>
+        </section>
+
+        <section id="view-view" class="view" aria-live="polite" hidden>
+          <h2>View note</h2>
+          <div id="view-block">
+            <p class="helper">Enter the password if required.</p>
+            <div class="row" id="view-password-row" hidden>
+              <label for="view-password">Password</label>
+              <input
+                type="password"
+                id="view-password"
+                name="password"
+                placeholder="Password"
+                autocomplete="current-password"
+              />
+            </div>
+            <button id="view-button" class="primary">Reveal note</button>
+            <p class="status" id="view-status" role="status"></p>
+          </div>
+          <article id="note-output" class="note" hidden></article>
+          <button id="back-home" class="ghost" hidden>Back to create</button>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Notes are deleted after being read or when they expire.</p>
+      </footer>
+    </div>
+
+    <script src="/src/main.js" defer></script>
+  </body>
+</html>
