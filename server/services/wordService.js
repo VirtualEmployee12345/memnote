@@ -19,10 +19,11 @@ async function generateUniqueKey() {
 
   for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt += 1) {
     const words = [pickRandom(adjectives), pickRandom(nouns), pickRandom(animals)];
-    const key = words.join('-');
+    const number = crypto.randomInt(1, 101); // Random number 1-100
+    const key = `${words.join('-')}-${number}`;
 
     if (!(await keyExists(client, key))) {
-      return { key, words };
+      return { key, words: [...words, number.toString()] };
     }
   }
 
