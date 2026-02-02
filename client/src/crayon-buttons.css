@@ -310,31 +310,6 @@ select:focus {
   border-top: 1px solid #e0e0e0;
 }
 
-.footer-section {
-  margin-bottom: 30px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.footer-section h4 {
-  font-family: 'Arial Black', 'Arial', sans-serif;
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  margin-bottom: 12px;
-}
-
-.footer-section p {
-  font-size: 13px;
-  color: #666;
-  line-height: 1.6;
-  text-transform: none;
-  letter-spacing: normal;
-}
-
 .footer-actions {
   margin-bottom: 30px;
 }
