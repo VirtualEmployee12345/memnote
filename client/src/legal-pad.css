@@ -4,7 +4,7 @@
   background-color: #fdf6a8; /* Classic legal pad yellow */
   position: relative;
   min-height: 400px;
-  padding: 20px 20px 20px 80px;
+  padding: 20px 20px 0 80px;
   box-shadow: 
     0 1px 3px rgba(0,0,0,0.12),
     0 1px 2px rgba(0,0,0,0.24),
@@ -12,6 +12,7 @@
   border-radius: 4px;
   font-family: 'Courier New', 'Courier', monospace;
   line-height: 1.6;
+  padding-bottom: 0;
 }
 
 /* Red margin line only */
@@ -38,8 +39,9 @@
   color: #2c3e50;
   resize: both;
   outline: none;
-  padding: 0;
+  padding: 0 0 24px 0;
   margin: 0;
+  position: relative;
 }
 
 .legal-pad textarea::placeholder {
@@ -47,10 +49,25 @@
   opacity: 0.7;
 }
 
-/* Custom resize handle at bottom right corner */
+/* Custom resize handle - drafter's triangle ruler style */
 .legal-pad textarea::-webkit-resizer {
-  background: linear-gradient(135deg, transparent 50%, #ff6b6b 50%);
-  border-bottom-right-radius: 4px;
+  background: 
+    /* Triangle base */
+    linear-gradient(135deg, #fdf6a8 50%, transparent 50%),
+    /* Measurement ticks */
+    linear-gradient(135deg, transparent 35%, #ff6b6b 35%, #ff6b6b 37%, transparent 37%),
+    linear-gradient(135deg, transparent 45%, #ff6b6b 45%, #ff6b6b 47%, transparent 47%),
+    linear-gradient(135deg, transparent 55%, #ff6b6b 55%, #ff6b6b 57%, transparent 57%),
+    linear-gradient(135deg, transparent 65%, #ff6b6b 65%, #ff6b6b 67%, transparent 67%),
+    /* Main diagonal line */
+    linear-gradient(135deg, transparent 50%, #ff6b6b 50%, #ff6b6b 52%, transparent 52%);
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+  border: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 /* Note display (when viewing) */
@@ -73,11 +90,16 @@
 /* Responsive */
 @media (max-width: 640px) {
   .legal-pad {
-    padding: 15px 15px 15px 60px;
+    padding: 15px 15px 0 60px;
     min-height: 260px;
   }
   
   .legal-pad::after {
     left: 45px;
+  }
+  
+  .legal-pad textarea {
+    min-height: 220px;
+    padding-bottom: 20px;
   }
 }
