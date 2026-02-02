@@ -1,103 +1,101 @@
-/* Composition Book Style Header */
+/* Composition Book Style Header - Clean version */
 
 .brand {
   text-align: center;
   margin-bottom: 60px;
   position: relative;
   padding: 40px 20px;
-  background-color: #f5d547;
-  background-image: 
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.8) 1px, transparent 1px),
-    radial-gradient(circle at 60% 20%, rgba(255,255,255,0.6) 1px, transparent 1px),
-    radial-gradient(circle at 40% 70%, rgba(255,255,255,0.7) 1px, transparent 1px),
-    radial-gradient(circle at 80% 50%, rgba(255,255,255,0.5) 1px, transparent 1px),
-    radial-gradient(circle at 10% 80%, rgba(255,255,255,0.6) 1px, transparent 1px),
-    radial-gradient(circle at 90% 10%, rgba(255,255,255,0.7) 1px, transparent 1px),
-    radial-gradient(circle at 30% 50%, rgba(255,255,255,0.5) 1px, transparent 1px),
-    radial-gradient(circle at 70% 80%, rgba(255,255,255,0.8) 1px, transparent 1px);
-  background-size: 100px 100px, 80px 80px, 120px 120px, 60px 60px, 90px 90px, 110px 110px, 70px 70px, 130px 130px;
+  background: transparent;
 }
 
-/* White label container */
+/* White label with wavy/pillowy shape like composition book */
 .brand .label {
   background: #ffffff;
   border: 3px solid #1a1a1a;
-  border-radius: 20px;
-  padding: 30px 40px;
+  border-radius: 30px;
+  padding: 35px 50px;
   display: inline-block;
   position: relative;
   box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+  /* Create the wavy pill shape */
+  border-top-left-radius: 40px 25px;
+  border-top-right-radius: 40px 25px;
+  border-bottom-left-radius: 40px 25px;
+  border-bottom-right-radius: 40px 25px;
 }
 
 /* Main title - NoteTransfer (Bold, mixed case) */
 .brand h1 {
   font-family: 'Arial Black', 'Arial', sans-serif;
-  font-size: 42px;
+  font-size: 44px;
   font-weight: 900;
   letter-spacing: 0.02em;
   color: #1a1a1a;
-  margin: 0 0 15px 0;
-  text-transform: none; /* Mixed case */
+  margin: 0 0 20px 0;
+  text-transform: none;
+  line-height: 1.1;
 }
 
-/* Wavy lines */
+/* Wavy lines container */
 .brand .lines {
-  margin: 15px 0;
-  height: 30px;
+  margin: 20px 0;
+  height: 50px;
   position: relative;
+  overflow: hidden;
 }
 
+/* Three wavy lines like the screenshot */
 .brand .lines::before,
-.brand .lines::after {
+.brand .lines::after,
+.brand .lines .line-mid {
   content: '';
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 5%;
+  right: 5%;
   height: 2px;
   background: #1a1a1a;
   border-radius: 50%;
 }
 
+/* Top wavy line - curves down in middle */
 .brand .lines::before {
-  top: 5px;
-  transform: scaleY(0.5) rotate(-1deg);
+  top: 8px;
+  clip-path: ellipse(50% 40% at 50% 0%);
+  transform: scaleY(0.6);
 }
 
+/* Middle wavy line - curves up in middle */
+.brand .lines .line-mid {
+  top: 22px;
+  clip-path: ellipse(50% 40% at 50% 100%);
+  transform: scaleY(0.6);
+}
+
+/* Bottom wavy line - curves down in middle */
 .brand .lines::after {
-  top: 18px;
-  transform: scaleY(0.5) rotate(1deg);
-}
-
-/* Additional wavy line */
-.brand .lines .line-third {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 11px;
-  height: 2px;
-  background: #1a1a1a;
-  border-radius: 50%;
-  transform: scaleY(0.5) rotate(-0.5deg);
+  top: 36px;
+  clip-path: ellipse(50% 40% at 50% 0%);
+  transform: scaleY(0.6);
 }
 
 /* Subtitle - SHARE NOTES (Bold, uppercase) */
 .brand .subtitle {
   font-family: 'Arial Black', 'Arial', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 900;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #1a1a1a;
-  margin: 15px 0 8px 0;
+  margin: 20px 0 8px 0;
 }
 
 /* Tagline - That disappear after reading (Regular, mixed case) */
 .brand .tagline {
   font-family: 'Arial', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: none; /* Mixed case */
+  letter-spacing: 0.01em;
+  text-transform: none;
   color: #1a1a1a;
   margin: 0;
 }
@@ -109,14 +107,15 @@
   }
   
   .brand .subtitle {
-    font-size: 14px;
+    font-size: 13px;
   }
   
   .brand .tagline {
-    font-size: 12px;
+    font-size: 11px;
   }
   
   .brand .label {
-    padding: 20px 25px;
+    padding: 25px 30px;
+    border-width: 2px;
   }
 }
