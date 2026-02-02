@@ -1,0 +1,339 @@
+/* Round bold buttons with crayon drawing animation */
+
+/* Remove card borders and grey backgrounds */
+.card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.card::before,
+.card::after {
+  display: none;
+}
+
+.view {
+  padding: 20px;
+}
+
+/* Center the form content */
+.centered-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Remove section headers */
+.view h2 {
+  display: none;
+}
+
+/* Row styling - centered */
+.row {
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row label {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+/* Checkbox styling */
+.check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.check input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #1a1a1a;
+  border-radius: 4px;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.check input[type="checkbox"]:checked {
+  background: #1a1a1a;
+}
+
+.check input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Text inputs - clean style */
+input[type="password"],
+select {
+  width: 100%;
+  padding: 14px 20px;
+  border: 2px solid #1a1a1a;
+  border-radius: 30px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  color: #1a1a1a;
+  outline: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+input[type="password"]:focus,
+select:focus {
+  border-width: 3px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Primary button - round bold with crayon animation */
+.primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 48px;
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 3px solid #1a1a1a;
+  border-radius: 50px;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+/* Crayon drawing animation on hover */
+.primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a1a;
+  border-radius: 50px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.primary:hover::before {
+  transform: scaleX(1);
+}
+
+.primary:hover {
+  color: #ffffff;
+  border-color: #1a1a1a;
+}
+
+/* Crayon scribble effect */
+.primary::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: 
+    linear-gradient(90deg, #1a1a1a 2px, transparent 2px) 0 0 / 20px 100%,
+    linear-gradient(0deg, #1a1a1a 2px, transparent 2px) 0 0 / 100% 20px;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+/* Ghost button - secondary style */
+.ghost {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  background: transparent;
+  color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+  border-radius: 50px;
+  font-family: 'Arial', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.ghost::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a1a;
+  border-radius: 50px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.ghost:hover::before {
+  transform: scaleX(1);
+}
+
+.ghost:hover {
+  color: #ffffff;
+}
+
+/* Result section styling */
+.result {
+  margin-top: 40px;
+  padding-top: 30px;
+  text-align: center;
+  width: 100%;
+}
+
+.result h3 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.result-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.result-row input {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  padding: 14px 20px;
+  border: 2px solid #1a1a1a;
+  border-radius: 30px;
+  background: #f7f7f7;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.result-row button {
+  padding: 14px 28px;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.result-row button:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+/* Helper text */
+.helper {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+/* Status messages */
+.status {
+  font-size: 13px;
+  color: #666;
+  margin-top: 16px;
+  min-height: 20px;
+  text-align: center;
+}
+
+.status.error {
+  color: #ff6b6b;
+}
+
+/* View note section */
+#view-block {
+  margin-bottom: 30px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 30px;
+}
+
+.footer p {
+  font-size: 11px;
+  color: #999;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .row {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  
+  .primary {
+    padding: 16px 36px;
+    font-size: 13px;
+  }
+  
+  .ghost {
+    padding: 14px 30px;
+    font-size: 12px;
+  }
+  
+  .result-row input {
+    min-width: 200px;
+  }
+}

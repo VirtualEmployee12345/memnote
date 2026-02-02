@@ -6,6 +6,7 @@
     <title>NoteTransfer</title>
     <link rel="stylesheet" href="/src/anduril-theme.css" />
     <link rel="stylesheet" href="/src/composition-header.css" />
+    <link rel="stylesheet" href="/src/crayon-buttons.css" />
     <link rel="stylesheet" href="/src/legal-pad.css" />
   </head>
   <body>
@@ -23,8 +24,7 @@
 
       <main class="card">
         <section id="create-view" class="view active" aria-live="polite">
-          <h2>Create a note</h2>
-          <form id="create-form">
+          <form id="create-form" class="centered-form">
             <div class="legal-pad-container">
             <div class="legal-pad">
               <textarea
@@ -80,8 +80,7 @@
         </section>
 
         <section id="view-view" class="view" aria-live="polite" hidden>
-          <h2>View note</h2>
-          <div id="view-block">
+          <div id="view-block" class="centered-form">
             <p class="helper">Enter the password if required.</p>
             <div class="row" id="view-password-row" hidden>
               <label for="view-password">Password</label>
