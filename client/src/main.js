@@ -10,10 +10,6 @@ const createStatus = document.getElementById('create-status');
 const result = document.getElementById('result');
 const resultUrl = document.getElementById('result-url');
 const copyButton = document.getElementById('copy-button');
-const emailButton = document.getElementById('email-button');
-const emailForm = document.getElementById('email-form');
-const emailInput = document.getElementById('email-input');
-const sendEmailButton = document.getElementById('send-email-button');
 
 const viewPasswordRow = document.getElementById('view-password-row');
 const viewPassword = document.getElementById('view-password');
@@ -93,8 +89,6 @@ const viewNote = async (key, password) => {
 const resetResult = () => {
   result.hidden = true;
   resultUrl.value = '';
-  emailForm.classList.remove('visible');
-  emailInput.value = '';
   setStatus(createStatus, '');
 };
 
@@ -196,49 +190,6 @@ copyButton.addEventListener('click', async () => {
   } catch (error) {
     setStatus(createStatus, 'Copy failed. Please copy manually.', true);
   }
-});
-
-// Email button - toggle email form
-emailButton.addEventListener('click', () => {
-  emailForm.classList.toggle('visible');
-  if (emailForm.classList.contains('visible')) {
-    emailInput.focus();
-  }
-});
-
-// Send email
-sendEmailButton.addEventListener('click', async () => {
-  const email = emailInput.value.trim();
-  const url = resultUrl.value;
-  
-  if (!email) {
-    setStatus(createStatus, 'Please enter an email address.', true);
-    return;
-  }
-  
-  if (!url) {
-    setStatus(createStatus, 'No note URL to send.', true);
-    return;
-  }
-  
-  // Simple email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    setStatus(createStatus, 'Please enter a valid email address.', true);
-    return;
-  }
-  
-  // Open default email client with pre-filled message
-  const subject = encodeURIComponent('A note has been shared with you via NoteTransfer');
-  const body = encodeURIComponent(`Someone shared a note with you:\n\n${url}\n\nThis note will self-destruct after reading or when it expires.`);
-  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-  
-  sendEmailButton.textContent = 'Sent';
-  setTimeout(() => {
-    sendEmailButton.textContent = 'Send';
-    emailForm.classList.remove('visible');
-    emailInput.value = '';
-  }, 1500);
 });
 
 viewButton.addEventListener('click', handleReveal);
