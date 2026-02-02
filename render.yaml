@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: memnote
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ENCRYPTION_KEY
+        generateValue: true
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: memnote-redis
+          property: connectionString
+
+  - type: redis
+    name: memnote-redis
+    plan: free
+    ipAllowList: []
