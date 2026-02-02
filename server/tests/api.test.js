@@ -1,6 +1,10 @@
 const assert = require('assert');
 const app = require('../index');
 
+if (!process.env.ENCRYPTION_KEY) {
+  process.env.ENCRYPTION_KEY = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef';
+}
+
 async function run() {
   const server = app.listen(0, '127.0.0.1');
   await new Promise((resolve) => server.once('listening', resolve));
@@ -15,22 +19,20 @@ async function run() {
     assert.strictEqual(healthJson.status, 'ok', 'health status should be ok');
 
     // Create
-    const createRes = await fetch(`${baseUrl}/notes`, {
+    const createRes = await fetch(`${baseUrl}/api/notes`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: 'hello' }),
     });
     assert.strictEqual(createRes.status, 201, 'create status should be 201');
     const createJson = await createRes.json();
-    assert.ok(createJson.id, 'create should return id');
-    assert.strictEqual(createJson.content, 'hello', 'create should echo content');
+    assert.ok(createJson.key, 'create should return key');
 
-    // Get
-    const getRes = await fetch(`${baseUrl}/notes/test-id`);
+    // Exists
+    const getRes = await fetch(`${baseUrl}/api/notes/${createJson.key}`);
     assert.strictEqual(getRes.status, 200, 'get status should be 200');
     const getJson = await getRes.json();
-    assert.strictEqual(getJson.id, 'test-id', 'get should return id');
-    assert.ok(getJson.content, 'get should return content');
+    assert.strictEqual(getJson.exists, true, 'get should return exists');
 
     console.log('All API tests passed.');
   } finally {
