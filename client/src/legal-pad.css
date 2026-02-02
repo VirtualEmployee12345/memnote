@@ -49,25 +49,14 @@
   opacity: 0.7;
 }
 
-/* Custom resize handle - drafter's triangle ruler style */
+/* Custom resize handle - double diagonal arrow SVG */
 .legal-pad textarea::-webkit-resizer {
-  background: 
-    /* Triangle base */
-    linear-gradient(135deg, #fdf6a8 50%, transparent 50%),
-    /* Measurement ticks */
-    linear-gradient(135deg, transparent 35%, #ff6b6b 35%, #ff6b6b 37%, transparent 37%),
-    linear-gradient(135deg, transparent 45%, #ff6b6b 45%, #ff6b6b 47%, transparent 47%),
-    linear-gradient(135deg, transparent 55%, #ff6b6b 55%, #ff6b6b 57%, transparent 57%),
-    linear-gradient(135deg, transparent 65%, #ff6b6b 65%, #ff6b6b 67%, transparent 67%),
-    /* Main diagonal line */
-    linear-gradient(135deg, transparent 50%, #ff6b6b 50%, #ff6b6b 52%, transparent 52%);
-  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23ff6b6b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M7 17L17 7M17 7H11M17 7V13M7 17H13M7 17V11'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: bottom right;
   width: 24px;
   height: 24px;
   border: none;
-  position: absolute;
-  right: 0;
-  bottom: 0;
 }
 
 /* Note display (when viewing) */
