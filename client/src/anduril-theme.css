@@ -66,39 +66,7 @@ body::before {
   z-index: -1;
 }
 
-/* Brand header */
-.brand {
-  text-align: center;
-  margin-bottom: 60px;
-  position: relative;
-}
-
-.brand::after {
-  content: '';
-  position: absolute;
-  bottom: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 1px;
-  background: var(--line);
-}
-
-.brand h1 {
-  font-size: 48px;
-  font-weight: 300;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-primary);
-  margin-bottom: 12px;
-}
-
-.brand p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
+/* Brand header - styled by composition-header.css */
 
 /* Main card container */
 .card {
