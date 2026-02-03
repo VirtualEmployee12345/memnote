@@ -1,0 +1,196 @@
+/* Pipe Animation - Letter travels through twisty pipe to deliver link */
+
+/* Animation container */
+.pipe-animation {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  height: 180px;
+  display: none;
+}
+
+.pipe-animation.active {
+  display: block;
+}
+
+/* Envelope - simple rectangle with triangular flap */
+.envelope {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 40px;
+  background: #ffffff;
+  border: 2px solid #1a1a1a;
+  border-radius: 2px;
+  opacity: 0;
+  z-index: 10;
+}
+
+/* Envelope flap (triangular top) */
+.envelope::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  height: 20px;
+  background: #ffffff;
+  border: 2px solid #1a1a1a;
+  border-bottom: none;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
+
+/* Envelope animation */
+@keyframes envelopeDrop {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px) scale(1.2);
+  }
+  15% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(140px) scale(0.6);
+  }
+}
+
+.envelope.animate {
+  animation: envelopeDrop 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Twisted pipe - vertical with S-curves */
+.pipe {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 120px;
+  opacity: 0;
+}
+
+.pipe.visible {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+/* Pipe segments - alternating curves create twist effect */
+.pipe-segment {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  border: 3px solid #1a1a1a;
+  background: transparent;
+}
+
+/* Top segment - curves right */
+.pipe-segment:nth-child(1) {
+  top: 0;
+  border-radius: 0 25px 25px 0;
+  border-left: none;
+}
+
+/* Middle segment - curves left */
+.pipe-segment:nth-child(2) {
+  top: 35px;
+  border-radius: 25px 0 0 25px;
+  border-right: none;
+}
+
+/* Bottom segment - curves right */
+.pipe-segment:nth-child(3) {
+  top: 70px;
+  border-radius: 0 25px 25px 0;
+  border-left: none;
+}
+
+/* Pipe opening (top ellipse) */
+.pipe::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46px;
+  height: 12px;
+  border: 3px solid #1a1a1a;
+  border-radius: 50%;
+  background: #f5f5f5;
+  z-index: 5;
+}
+
+/* Pipe exit (bottom ellipse) */
+.pipe::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46px;
+  height: 12px;
+  border: 3px solid #1a1a1a;
+  border-radius: 50%;
+  background: #ffffff;
+  z-index: 5;
+}
+
+/* Pipe rumble animation */
+@keyframes pipeRumble {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  25% { transform: translateX(-50%) translateY(-2px); }
+  50% { transform: translateX(-50%) translateY(2px); }
+  75% { transform: translateX(-50%) translateY(-1px); }
+}
+
+.pipe.rumble {
+  animation: pipeRumble 0.3s ease-in-out 3;
+}
+
+/* Result link - slides up after pipe */
+.result-link {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0;
+  white-space: nowrap;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #1a1a1a;
+  background: #f7f7f7;
+  padding: 8px 16px;
+  border: 2px solid #1a1a1a;
+  border-radius: 20px;
+  z-index: 10;
+}
+
+@keyframes linkPop {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.result-link.animate {
+  animation: linkPop 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Reduced motion - skip animation, show instantly */
+@media (prefers-reduced-motion: reduce) {
+  .pipe-animation {
+    display: none !important;
+  }
+}

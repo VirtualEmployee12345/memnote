@@ -9,6 +9,7 @@ const noteExpiration = document.getElementById('note-expiration');
 const createStatus = document.getElementById('create-status');
 const result = document.getElementById('result');
 const resultUrl = document.getElementById('result-url');
+const pipeAnimation = document.getElementById('pipe-animation');
 const copyButton = document.getElementById('copy-button');
 
 const viewPasswordRow = document.getElementById('view-password-row');
@@ -90,6 +91,56 @@ const resetResult = () => {
   result.hidden = true;
   resultUrl.value = '';
   setStatus(createStatus, '');
+  // Reset animation
+  if (pipeAnimation) {
+    pipeAnimation.classList.remove('active');
+    const envelope = pipeAnimation.querySelector('.envelope');
+    const pipe = pipeAnimation.querySelector('.pipe');
+    if (envelope) envelope.classList.remove('animate');
+    if (pipe) {
+      pipe.classList.remove('visible', 'rumble');
+    }
+  }
+};
+
+// Run pipe animation and return promise that resolves when complete
+const runPipeAnimation = () => {
+  return new Promise((resolve) => {
+    // Check for reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      resolve();
+      return;
+    }
+    
+    // Show animation container
+    pipeAnimation.classList.add('active');
+    
+    const envelope = pipeAnimation.querySelector('.envelope');
+    const pipe = pipeAnimation.querySelector('.pipe');
+    
+    // Show pipe
+    setTimeout(() => {
+      pipe.classList.add('visible');
+    }, 50);
+    
+    // Start envelope animation
+    setTimeout(() => {
+      envelope.classList.add('animate');
+    }, 100);
+    
+    // Trigger pipe rumble when envelope enters
+    setTimeout(() => {
+      pipe.classList.add('rumble');
+    }, 400);
+    
+    // Resolve when animation completes
+    setTimeout(() => {
+      pipeAnimation.classList.remove('active');
+      envelope.classList.remove('animate');
+      pipe.classList.remove('visible', 'rumble');
+      resolve();
+    }, 1400);
+  });
 };
 
 const resetViewState = () => {
@@ -119,6 +170,10 @@ const handleCreateSubmit = async (event) => {
     setStatus(createStatus, 'Creating note...');
     const data = await createNote(content, options);
     const url = `${window.location.origin}/${data.key}`;
+    
+    // Run pipe animation, then show result
+    await runPipeAnimation();
+    
     resultUrl.value = url;
     result.hidden = false;
     setStatus(createStatus, 'Note created successfully.');
